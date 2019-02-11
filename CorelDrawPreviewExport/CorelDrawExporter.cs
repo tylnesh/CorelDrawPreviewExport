@@ -28,7 +28,7 @@ namespace CorelDrawPreviewExport
 
         }
 
-
+        //Exports all FMR Backgrounds
         public void ExportAllFmrBackgrounds()
         {
             ShapeRange kit = this.appDraw.ActiveSelectionRange;
@@ -38,11 +38,6 @@ namespace CorelDrawPreviewExport
 
                 String[] filePaths = Directory.GetFiles(@"C:\CorelDrawPreviewExport\CorelDrawPreviewExport\assets\bg\fmr\", "*.cdr",
                                              SearchOption.TopDirectoryOnly);
-
-                //fileName.Substring(0, 3);
-
-                //MessageBox.Show(filePaths.Length.ToString());
-
 
                 for (int i = 0; i < filePaths.Length; i++)
                 {
@@ -56,7 +51,7 @@ namespace CorelDrawPreviewExport
         }
 
 
-
+        //Export function for the F Background
         public void ExportFmrFBackground()
         {
             ShapeRange kit = this.appDraw.ActiveSelectionRange;
@@ -67,7 +62,7 @@ namespace CorelDrawPreviewExport
                 ArrangeExportAndCleanup(kit, fmrf, cdrFilter.cdrPNG, 2000, 1197);
             }
         }
-
+        //Export function for the M Background
         public void ExportFmrMBackground()
         {
             ShapeRange kit = this.appDraw.ActiveSelectionRange;
@@ -78,7 +73,7 @@ namespace CorelDrawPreviewExport
                 ArrangeExportAndCleanup(kit, fmrm, cdrFilter.cdrPNG, 2000, 1197);
             }
         }
-
+        //Export function for the K Background
         public void ExportFmrKBackground()
         {
             ShapeRange kit = this.appDraw.ActiveSelectionRange;
@@ -89,6 +84,7 @@ namespace CorelDrawPreviewExport
             }
         }
 
+        //Export function for the White Background
         public void ExportFmrWBackground()
         {
             ShapeRange kit = this.appDraw.ActiveSelectionRange;
@@ -100,14 +96,14 @@ namespace CorelDrawPreviewExport
         }
 
 
-
+        // Checks whether the dimensions for the kit are valid and if not, shows an error message
         private bool CheckKitDimensions(VGCore.ShapeRange kit)
         {
 
             if (kit.SizeHeight > kit.SizeWidth)
             {
 
-                MessageBox.Show("Kamo, nebud 8==D !!!");
+                MessageBox.Show("The kit's width must be bigger than it's height!");
                 return false;
             }
             else
@@ -116,6 +112,7 @@ namespace CorelDrawPreviewExport
             }
         }
 
+        //runs ArrangeBackground, ExportImage and deletes background to keep the file sizes low.
 
         private void ArrangeExportAndCleanup(VGCore.ShapeRange kit, VGCore.Shape background, cdrFilter filter, int Width, int Height)
         {
@@ -127,6 +124,7 @@ namespace CorelDrawPreviewExport
 
         }
 
+        //exports image 
 
         private void ExportImage(VGCore.ShapeRange kit, VGCore.Shape background, cdrFilter imageType, int width, int height)
         {
@@ -149,14 +147,12 @@ namespace CorelDrawPreviewExport
                 suffix = " -" + background.Name.ElementAt(4);
             }
 
-
-
-            //     MessageBox.Show(filePath+ fileName + suffix + ".png");
             ExportFilter expFil = this.appDraw.ActiveDocument.ExportBitmap(filePath + fileName + suffix + ".png", imageType, cdrExportRange.cdrSelection, cdrImageType.cdrRGBColorImage, width, height, 300, 300);
             expFil.Finish();
 
         }
 
+        // ImportBackgrounds - Imports Backgrounds from Install Folder.
 
         private VGCore.Shape ImportBackground(String fileName)
         {
@@ -180,6 +176,8 @@ namespace CorelDrawPreviewExport
 
         }
 
+
+        // ArrangeBackground - Arranges Backgrounds behind the decals kit. FMR_K needs to be moved to the bottom left and FMR_M needs to be moved down by a bit.
 
         private void ArrangeBackground(ShapeRange kit, VGCore.Shape background)
         {

@@ -1,6 +1,5 @@
 C:\CorelDrawPreviewExport\CorelDrawPreviewExport\bin\Release\CorelDrawPreviewExport.dll
 C:\CorelDrawPreviewExport\CorelDrawPreviewExport\bin\Release\CorelDrawPreviewExport.pdb
-C:\CorelDrawPreviewExport\CorelDrawPreviewExport\obj\Release\CorelDrawPreviewExport.csprojAssemblyReference.cache
 C:\CorelDrawPreviewExport\CorelDrawPreviewExport\obj\Release\Interop.VGCore.dll
 C:\CorelDrawPreviewExport\CorelDrawPreviewExport\obj\Release\CorelDrawPreviewExport.csproj.ResolveComReference.cache
 C:\CorelDrawPreviewExport\CorelDrawPreviewExport\obj\Release\ButtonFMRK.g.cs
@@ -21,3 +20,4 @@ C:\CorelDrawPreviewExport\CorelDrawPreviewExport\obj\Release\CorelDrawPreviewExp
 C:\CorelDrawPreviewExport\CorelDrawPreviewExport\obj\Release\CorelDrawPreviewExport.csproj.CoreCompileInputs.cache
 C:\CorelDrawPreviewExport\CorelDrawPreviewExport\obj\Release\CorelDrawPreviewExport.dll
 C:\CorelDrawPreviewExport\CorelDrawPreviewExport\obj\Release\CorelDrawPreviewExport.pdb
+C:\CorelDrawPreviewExport\CorelDrawPreviewExport\obj\Release\CorelDrawPreviewExport.csprojAssemblyReference.cache

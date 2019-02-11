@@ -9,7 +9,7 @@
     <Button x:Name="ButtonFMRFButton" Click="ButtonFMRF_Click" Width="24" Height="24" >
         <Button.Template>
             <ControlTemplate>
-                <Image Source="C:\CorelIcons\FMR_F.bmp"/>
+                <Image Source="C:\CorelDrawPreviewExport\CorelDrawPreviewExport\assets\icons\FMR_F.bmp"/>
             </ControlTemplate>
         </Button.Template>
     </Button>    

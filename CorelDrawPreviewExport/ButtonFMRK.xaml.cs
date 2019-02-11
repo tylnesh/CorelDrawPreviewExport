@@ -19,7 +19,7 @@ namespace CorelDrawPreviewExport
 {
     
         /// <summary>
-        /// Interaction logic for Button FMR All
+        /// Interaction logic for Button FMR K
         /// </summary>
         public partial class ButtonFMRK : UserControl
         {

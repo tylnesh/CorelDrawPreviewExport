@@ -259,3 +259,7 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/CorelDrawPreviewExport/assets/bg/fmr/FMR_W.cdr
+/CorelDrawPreviewExport/assets/bg/fmr/FMR_M.cdr
+/CorelDrawPreviewExport/assets/bg/fmr/FMR_K.cdr
+/CorelDrawPreviewExport/assets/bg/fmr/FMR_F.cdr
