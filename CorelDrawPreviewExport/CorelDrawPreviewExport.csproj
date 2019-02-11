@@ -106,6 +106,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="assets\bg\fmr\FMR_F.cdr" />
+    <None Include="assets\bg\fmr\FMR_K.cdr" />
+    <None Include="assets\bg\fmr\FMR_M.cdr" />
+    <None Include="assets\bg\fmr\FMR_W.cdr" />
     <None Include="CorelDrawPreviewExportInstaller.CGSaddon" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -134,6 +138,9 @@
   <ItemGroup>
     <Content Include="bin\Release\CorelDrawPreviewExport.dll" />
     <Content Include="bin\Release\CorelDrawPreviewExport.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="assets\bg\msmx\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
