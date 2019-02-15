@@ -21,3 +21,6 @@ C:\CorelDrawPreviewExport\CorelDrawPreviewExport\obj\Release\CorelDrawPreviewExp
 C:\CorelDrawPreviewExport\CorelDrawPreviewExport\obj\Release\CorelDrawPreviewExport.dll
 C:\CorelDrawPreviewExport\CorelDrawPreviewExport\obj\Release\CorelDrawPreviewExport.pdb
 C:\CorelDrawPreviewExport\CorelDrawPreviewExport\obj\Release\CorelDrawPreviewExport.csprojAssemblyReference.cache
+C:\CorelDrawPreviewExport\CorelDrawPreviewExport\obj\Release\ButtonMSMXC.g.cs
+C:\CorelDrawPreviewExport\CorelDrawPreviewExport\obj\Release\ButtonMSMXC.baml
+C:\CorelDrawPreviewExport\CorelDrawPreviewExport\obj\Release\CorelDrawPreviewExport.ExportForm.resources

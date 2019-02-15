@@ -28,6 +28,29 @@ namespace CorelDrawPreviewExport
 
         }
 
+        // Exports MSMX background with customizable text labels 
+
+        public void ExportMSMXBackground(string variant, string number = null, string name = null)
+        {
+            VGCore.ShapeRange kit = this.appDraw.ActiveSelectionRange;
+            if (CheckKitDimensions(kit))
+            {
+
+                VGCore.Shape msmx = ImportBackground("msmx.cdr");
+
+                ArrangeExportAndCleanup(kit, msmx, cdrFilter.cdrJPEG, 1000, 779, variant, number, name);
+
+
+            }
+
+        }
+
+
+
+
+
+
+
         //Exports all FMR Backgrounds
         public void ExportAllFmrBackgrounds()
         {
@@ -41,7 +64,6 @@ namespace CorelDrawPreviewExport
 
                 for (int i = 0; i < filePaths.Length; i++)
                 {
-                    //MessageBox.Show(filePaths[i].ToString().Substring(filePaths[i].Length-9,9));
                     VGCore.Shape fmr = ImportBackground(filePaths[i].ToString().Substring(filePaths[i].Length - 9, 9));
                     ArrangeExportAndCleanup(kit, fmr, cdrFilter.cdrPNG, 2000, 1197);
                 }
@@ -114,19 +136,19 @@ namespace CorelDrawPreviewExport
 
         //runs ArrangeBackground, ExportImage and deletes background to keep the file sizes low.
 
-        private void ArrangeExportAndCleanup(VGCore.ShapeRange kit, VGCore.Shape background, cdrFilter filter, int Width, int Height)
+        private void ArrangeExportAndCleanup(VGCore.ShapeRange kit, VGCore.Shape background, cdrFilter filter, int Width, int Height, string variant = null, string number = null, string name = null)
         {
 
 
-            ArrangeBackground(kit, background);
-            ExportImage(kit, background, filter, Width, Height);
+            ArrangeBackground(kit, background, variant, number, name);
+            ExportImage(kit, background, filter, Width, Height, variant, number, name);
             background.Delete();
 
         }
 
         //exports image 
 
-        private void ExportImage(VGCore.ShapeRange kit, VGCore.Shape background, cdrFilter imageType, int width, int height)
+        private void ExportImage(VGCore.ShapeRange kit, VGCore.Shape background, cdrFilter imageType, int width, int height, string variant = null, string number = null, string name = null)
         {
 
             ShapeRange exportRange = kit;
@@ -138,16 +160,34 @@ namespace CorelDrawPreviewExport
 
             String filePath = this.appDraw.ActiveDocument.FilePath;
             fileName = fileName.Remove(fileName.Length - 4, 4);
-
-
             String suffix = "";
+            ExportFilter expFil;
 
-            if (background.Name != "FMR_W.cdr")
+            if (variant == null)
             {
-                suffix = " -" + background.Name.ElementAt(4);
-            }
 
-            ExportFilter expFil = this.appDraw.ActiveDocument.ExportBitmap(filePath + fileName + suffix + ".png", imageType, cdrExportRange.cdrSelection, cdrImageType.cdrRGBColorImage, width, height, 300, 300);
+                if (background.Name != "FMR_W.cdr")
+                {
+                    suffix = " -" + background.Name.ElementAt(4);
+                }
+
+                if (imageType == cdrFilter.cdrPNG) suffix += ".png";
+
+                expFil = this.appDraw.ActiveDocument.ExportBitmap(filePath + fileName + suffix, imageType, cdrExportRange.cdrSelection, cdrImageType.cdrRGBColorImage, width, height, 300, 300);
+            }
+            else
+            {
+                if (imageType == cdrFilter.cdrJPEG) suffix += ".jpg";
+                if (name.Length > 0 || number.Length > 0)
+
+                {
+                    number = "#" + number;
+                    fileName = variant + " " + number + " " + name + fileName.Substring(6);
+                }
+                else fileName = variant + fileName.Substring(6);
+                expFil = this.appDraw.ActiveDocument.ExportBitmap(filePath + fileName + suffix, imageType, cdrExportRange.cdrSelection, cdrImageType.cdrRGBColorImage, width, height, 300, 300);
+
+            }
             expFil.Finish();
 
         }
@@ -179,10 +219,19 @@ namespace CorelDrawPreviewExport
 
         // ArrangeBackground - Arranges Backgrounds behind the decals kit. FMR_K needs to be moved to the bottom left and FMR_M needs to be moved down by a bit.
 
-        private void ArrangeBackground(ShapeRange kit, VGCore.Shape background)
+        private void ArrangeBackground(ShapeRange kit, VGCore.Shape background, string variant = null, string number = null, string name = null)
         {
 
             background.OrderToBack();
+
+            if (background.Name == "msmx.cdr")
+            {
+                if (name.Length > 0 || number.Length > 0) background.Shapes.FindShape("custom", cdrShapeType.cdrTextShape).Text.Replace("#XX XXXXXXXXX", "#" + number + " " + name, true);
+                else background.Shapes.FindShape("custom", cdrShapeType.cdrTextShape).Text.Replace("#XX XXXXXXXXX", "", true);
+
+                background.Shapes.FindShape("design", cdrShapeType.cdrTextShape).Text.Replace("X XXXX -XX", variant, true);
+
+            }
 
             if (background.Name != "FMR_K.cdr")
             {
@@ -202,6 +251,7 @@ namespace CorelDrawPreviewExport
                 background.CenterX = kit.CenterX - 5;
                 background.CenterY = kit.CenterY + 2;
             }
+
 
         }
 
