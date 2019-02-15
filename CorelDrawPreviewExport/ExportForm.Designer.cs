@@ -44,7 +44,7 @@
             this.exportButton.Location = new System.Drawing.Point(25, 132);
             this.exportButton.Name = "exportButton";
             this.exportButton.Size = new System.Drawing.Size(75, 23);
-            this.exportButton.TabIndex = 0;
+            this.exportButton.TabIndex = 4;
             this.exportButton.Text = "Export";
             this.exportButton.UseVisualStyleBackColor = true;
             this.exportButton.Click += new System.EventHandler(this.exportButton_Click_1);
@@ -54,7 +54,7 @@
             this.cancelButton.Location = new System.Drawing.Point(122, 132);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 1;
+            this.cancelButton.TabIndex = 5;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click_1);
@@ -64,21 +64,22 @@
             this.variantBox.Location = new System.Drawing.Point(97, 12);
             this.variantBox.Name = "variantBox";
             this.variantBox.Size = new System.Drawing.Size(100, 20);
-            this.variantBox.TabIndex = 2;
+            this.variantBox.TabIndex = 1;
             // 
             // nameBox
             // 
-            this.nameBox.Location = new System.Drawing.Point(97, 47);
+            this.nameBox.AcceptsReturn = true;
+            this.nameBox.Location = new System.Drawing.Point(97, 85);
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(100, 20);
             this.nameBox.TabIndex = 3;
             // 
             // numberBox
             // 
-            this.numberBox.Location = new System.Drawing.Point(97, 82);
+            this.numberBox.Location = new System.Drawing.Point(97, 50);
             this.numberBox.Name = "numberBox";
             this.numberBox.Size = new System.Drawing.Size(100, 20);
-            this.numberBox.TabIndex = 4;
+            this.numberBox.TabIndex = 2;
             // 
             // variantLabel
             // 
@@ -92,7 +93,7 @@
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(34, 50);
+            this.nameLabel.Location = new System.Drawing.Point(34, 88);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(38, 13);
             this.nameLabel.TabIndex = 6;
@@ -101,7 +102,7 @@
             // numberLabel
             // 
             this.numberLabel.AutoSize = true;
-            this.numberLabel.Location = new System.Drawing.Point(34, 85);
+            this.numberLabel.Location = new System.Drawing.Point(34, 53);
             this.numberLabel.Name = "numberLabel";
             this.numberLabel.Size = new System.Drawing.Size(47, 13);
             this.numberLabel.TabIndex = 7;

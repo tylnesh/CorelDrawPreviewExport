@@ -46,11 +46,6 @@ namespace CorelDrawPreviewExport
         }
 
 
-
-
-
-
-
         //Exports all FMR Backgrounds
         public void ExportAllFmrBackgrounds()
         {
@@ -178,16 +173,12 @@ namespace CorelDrawPreviewExport
             else
             {
                 if (imageType == cdrFilter.cdrJPEG) suffix += ".jpg";
-                if (name.Length > 0 || number.Length > 0)
-
-                {
-                    number = "#" + number;
-                    fileName = variant + " " + number + " " + name + fileName.Substring(6);
-                }
-                else fileName = variant + fileName.Substring(6);
-                expFil = this.appDraw.ActiveDocument.ExportBitmap(filePath + fileName + suffix, imageType, cdrExportRange.cdrSelection, cdrImageType.cdrRGBColorImage, width, height, 300, 300);
-
+                //fileName = variant + fileName.Substring(6);
+                expFil = this.appDraw.ActiveDocument.ExportBitmap(filePath + fileName + suffix, imageType, cdrExportRange.cdrSelection, cdrImageType.cdrRGBColorImage, width, height, 300, 300,
+                    cdrAntiAliasingType.cdrNormalAntiAliasing, false , false ,true ,false , cdrCompressionType.cdrCompressionJPEG);
+                
             }
+            
             expFil.Finish();
 
         }
@@ -224,18 +215,11 @@ namespace CorelDrawPreviewExport
 
             background.OrderToBack();
 
-            if (background.Name == "msmx.cdr")
-            {
-                if (name.Length > 0 || number.Length > 0) background.Shapes.FindShape("custom", cdrShapeType.cdrTextShape).Text.Replace("#XX XXXXXXXXX", "#" + number + " " + name, true);
-                else background.Shapes.FindShape("custom", cdrShapeType.cdrTextShape).Text.Replace("#XX XXXXXXXXX", "", true);
-
-                background.Shapes.FindShape("design", cdrShapeType.cdrTextShape).Text.Replace("X XXXX -XX", variant, true);
-
-            }
+            
 
             if (background.Name != "FMR_K.cdr")
             {
-                background.SetSize(kit.SizeWidth + 10);
+                background.SetSize(kit.SizeWidth + 5);
                 background.CenterX = kit.CenterX;
                 background.CenterY = kit.CenterY;
 
@@ -250,6 +234,16 @@ namespace CorelDrawPreviewExport
                 background.SetSize(kit.SizeWidth + 15);
                 background.CenterX = kit.CenterX - 5;
                 background.CenterY = kit.CenterY + 2;
+            }
+
+            if (background.Name == "msmx.cdr")
+            {
+                if (name.Length > 0 || number.Length > 0) background.Shapes.FindShape("custom", cdrShapeType.cdrTextShape).Text.Replace("#XX XXXXXXXXX", "#" + number + " " + name, true);
+                else background.Shapes.FindShape("custom", cdrShapeType.cdrTextShape).Text.Replace("#XX XXXXXXXXX", "", true);
+
+                background.Shapes.FindShape("design", cdrShapeType.cdrTextShape).Text.Replace("X XXXX -XX", variant, true);
+                background.CenterY = kit.CenterY + 3;
+
             }
 
 

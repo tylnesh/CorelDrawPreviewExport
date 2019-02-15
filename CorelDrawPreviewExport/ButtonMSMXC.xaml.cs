@@ -19,13 +19,11 @@ namespace CorelDrawPreviewExport
 {
 
     /// <summary>
-    /// Interaction logic for Button FMR W
+    /// Interaction logic for Button MSMX C
     /// </summary>
     public partial class ButtonMSMXC : UserControl
     {
-        //CorelDrawExporter cde;
         ExportForm ex;
-
 
         public ButtonMSMXC()
         {
@@ -35,18 +33,13 @@ namespace CorelDrawPreviewExport
         public ButtonMSMXC(object app)
         {
             InitializeComponent();
-            
             ex = new ExportForm((VGCore.Application)app);
             
-            //cde = new CorelDrawExporter(app);
-
         }
 
         public void ButtonMSMXC_Click(object sender, RoutedEventArgs e)
         {
-
             ex.ShowDialog();
-            //cde.ExportFmrWBackground();
         }
 
 

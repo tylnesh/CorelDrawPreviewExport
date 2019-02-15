@@ -23,8 +23,6 @@ namespace CorelDrawPreviewExport
         private void exportButton_Click_1(object sender, EventArgs e)
         {
             CorelDrawPreviewExport.CorelDrawExporter exp = new CorelDrawPreviewExport.CorelDrawExporter(this.appDraw);
-
-            //MessageBox.Show(this.nameBox.Text.Length.ToString(), this.numberBox.Text.Length.ToString());
             exp.ExportMSMXBackground(this.variantBox.Text, this.numberBox.Text, this.nameBox.Text);
             Close();
         }
